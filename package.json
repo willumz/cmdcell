@@ -1,0 +1,29 @@
+{
+  "name": "cmdcell",
+  "version": "1.0.0",
+  "description": "A command parser designed for CellBot",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "docs": "npx typedoc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willumz/cmdcell.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/willumz/cmdcell/issues"
+  },
+  "homepage": "https://github.com/willumz/cmdcell#readme",
+  "dependencies": {
+    "discord.js": "^12.5.3"
+  },
+  "devDependencies": {
+    "typedoc": "^0.20.36",
+    "typescript": "^4.2.4"
+  }
+}
