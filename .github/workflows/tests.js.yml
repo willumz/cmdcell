@@ -27,4 +27,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm i -D
     - run: npm test
-    - run: npx codecov
+    - uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
