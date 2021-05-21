@@ -25,9 +25,18 @@ export class CommandHandler {
      * regardless of whether the message contains a command or not. This could
      * be useful, for example, for levelling purposes in a Discord bot.
      *
+     * @param text - The text which was to be parsed
      * @param props - The variables handed to the command handler when the text is parsed
      */
-    nonCommand?: (props: CommandProps) => void;
+    nonCommand?: (text: string, props: CommandProps) => void;
+    /**
+     * Set `nonCommand`
+     * @param nonCommand - The command which is always run when something is parsed
+     * (see {@link CommandHandler.nonCommand nonCommand})
+     */
+    setNonCommand(nonCommand: (text: string, props: CommandProps) => void): void {
+        this.nonCommand = nonCommand;
+    }
 
     /**
      * The constructor for `CommandHandler` which initialises it with values
@@ -49,7 +58,7 @@ export class CommandHandler {
      */
     parseCommand(text: string, props: CommandProps): ParseError | true | false {
         // Execute nonCommand
-        if (this.nonCommand !== undefined) this.nonCommand(props);
+        if (this.nonCommand !== undefined) this.nonCommand(text, props);
 
         // Check prefix
         if (!text.startsWith(this.prefix)) return false;
@@ -90,6 +99,7 @@ export class CommandHandler {
         const cmdParameters: CommandParameters = {};
 
         // Iterate through parameters
+        var errors: ParseError[] = [];
         cmd.parameters.forEach((val, ind) => {
             // Check parameter exists
             if (splitText.length > ind + 1) {
@@ -97,17 +107,20 @@ export class CommandHandler {
                 const paramType = CommandHandler.inferType(splitText[ind + 1]);
                 // Compare types
                 if (paramType !== val[1])
-                    return new ParseErrorInvalidParameterType(
-                        val[0],
-                        splitText[ind + 1],
-                        val[1],
-                        paramType
+                    errors.push(
+                        new ParseErrorInvalidParameterType(
+                            val[0],
+                            splitText[ind + 1],
+                            val[1],
+                            paramType
+                        )
                     );
                 cmdParameters[val[0]] = splitText[ind + 1];
             } else {
-                return new ParseErrorMissingParameter(val[0], val[1]);
+                errors.push(new ParseErrorMissingParameter(val[0], val[1]));
             }
         });
+        if (errors.length > 0) return errors[0];
 
         cmd.run(cmdParameters, text, props);
 
