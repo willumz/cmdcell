@@ -17,6 +17,9 @@ export class CommandHandler {
     /** The commands to be handled */
     commands: Command[];
 
+    /** The command prefix */
+    prefix: string;
+
     /**
      * An optional function which will be executed every time a message is parsed,
      * regardless of whether the message contains a command or not. This could
@@ -30,8 +33,9 @@ export class CommandHandler {
      * The constructor for `CommandHandler` which initialises it with values
      * @param commands - The commands to be handled
      */
-    constructor(commands: Command[]) {
+    constructor(commands: Command[], prefix: string) {
         this.commands = commands;
+        this.prefix = prefix;
     }
 
     /**
@@ -40,14 +44,20 @@ export class CommandHandler {
      * @param text - The text to be parsed
      * @param props - Any variables to be passed to the run function
      *
-     * @returns True or false, depending on whether the command was successfully parsed
+     * @returns True if the command was successfully run, false if no prefix was found,
+     * ParseError if an error occurred during the parsing process
      */
-    parseCommand(text: string, props: CommandProps): ParseError | true {
+    parseCommand(text: string, props: CommandProps): ParseError | true | false {
         // Execute nonCommand
         if (this.nonCommand !== undefined) this.nonCommand(props);
 
+        // Check prefix
+        if (!text.startsWith(this.prefix)) return false;
+        // Remove prefix
+        const textNoPrefix = text.replace(this.prefix, "");
+
         // Split text to parse
-        const splitText = text.split(" ");
+        const splitText = textNoPrefix.split(" ");
 
         let cmd: Command | undefined = undefined;
         let prevCmd: Command | undefined = undefined;
