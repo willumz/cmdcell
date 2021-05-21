@@ -1,20 +1,21 @@
 {
   "name": "cmdcell",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A command parser designed for CellBot",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "docs": "npx typedoc"
+    "docs": "typedoc",
+    "test": "jest --coverage ./tests"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/willumz/cmdcell.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Will Rycroft",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/willumz/cmdcell/issues"
   },
@@ -23,6 +24,9 @@
     "discord.js": "^12.5.3"
   },
   "devDependencies": {
+    "@types/jest": "^26.0.23",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.5.6",
     "typedoc": "^0.20.36",
     "typescript": "^4.2.4"
   }

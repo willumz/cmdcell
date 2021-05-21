@@ -11,4 +11,7 @@ export { Command, CommandParameterType } from "./Command";
 export { CommandHandler } from "./CommandHandler";
 
 // Types.ts
-export { CommandParameters, CommandFunction } from "./Types";
+export { CommandParameters, CommandFunction, CommandProps } from "./Types";
+
+// ParseError.ts
+export { ParseError, ParseErrorInvalidParameterType, ParseErrorInvalidCommand, ParseErrorMissingParameter } from "./ParseError";

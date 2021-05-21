@@ -1,0 +1,7 @@
+/src
+/docs
+/tests
+/coverage
+typedoc.json
+tsconfig.json
+jest.config.js

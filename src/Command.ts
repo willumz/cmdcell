@@ -1,15 +1,17 @@
-import { CommandParameters, CommandFunction } from "./Types";
+import { CommandFunction } from "./Types";
 
 /**
  * An enumerator of the different valid parameter types for commands
  */
 export enum CommandParameterType {
     /** The type corresponding to `string` */
-    String,
+    STRING,
     /** The type corresponding to `number` */
-    Number,
+    NUMBER,
     /** The type corresponding to `boolean` */
-    Boolean,
+    BOOLEAN,
+    /** Invalid type - could not be parsed to a valid type */
+    INVALID
 }
 
 /**
