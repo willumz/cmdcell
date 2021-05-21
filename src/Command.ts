@@ -11,7 +11,7 @@ export enum CommandParameterType {
     /** The type corresponding to `boolean` */
     BOOLEAN,
     /** Invalid type - could not be parsed to a valid type */
-    INVALID
+    INVALID,
 }
 
 /**

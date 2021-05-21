@@ -1,4 +1,4 @@
-import { Command, CommandParameterType } from "./Command";
+import { CommandParameterType } from "./Command";
 
 /**
  * Each instantiated object of this class holds information about an error that occurred during parsing

@@ -2,7 +2,12 @@
 
 import { Command, CommandParameterType } from "./Command";
 import { CommandParameters, CommandProps } from "./Types";
-import { ParseError, ParseErrorInvalidCommand, ParseErrorInvalidParameterType, ParseErrorMissingParameter } from "./ParseError";
+import {
+    ParseError,
+    ParseErrorInvalidCommand,
+    ParseErrorInvalidParameterType,
+    ParseErrorMissingParameter,
+} from "./ParseError";
 
 /**
  * Handles parsing messages for commands and their parameters
@@ -42,16 +47,15 @@ export class CommandHandler {
         if (this.nonCommand !== undefined) this.nonCommand(props);
 
         // Split text to parse
-        var splitText = text.split(" ");
+        const splitText = text.split(" ");
 
-        var cmd: Command | undefined = undefined;
-        var prevCmd: Command | undefined = undefined;
+        let cmd: Command | undefined = undefined;
+        let prevCmd: Command | undefined = undefined;
         // Init searchable commands as all commands handled by this handler
-        var cmds: Command[] = this.commands;
-        var splitTextIndex = 0;
+        let cmds: Command[] = this.commands;
+        let splitTextIndex = 0;
         while (true) {
-            var commandText = splitText[splitTextIndex];
-            cmd = cmds.find(c => c.command === commandText);
+            cmd = cmds.find(c => c.command === splitText[splitTextIndex]);
             if (cmd !== undefined) {
                 // Repeat loop to check for subcommand
                 // Prepare for next loop
@@ -73,14 +77,14 @@ export class CommandHandler {
         splitText.splice(0, splitTextIndex);
 
         // Init object to hold parameters
-        var cmdParameters: CommandParameters = {};
+        const cmdParameters: CommandParameters = {};
 
         // Iterate through parameters
-        cmd.parameters.forEach((val, ind, arr) => {
+        cmd.parameters.forEach((val, ind) => {
             // Check parameter exists
             if (splitText.length > ind + 1) {
                 // Get parameter type
-                var paramType = CommandHandler.inferType(splitText[ind + 1]);
+                const paramType = CommandHandler.inferType(splitText[ind + 1]);
                 // Compare types
                 if (paramType !== val[1])
                     return new ParseErrorInvalidParameterType(

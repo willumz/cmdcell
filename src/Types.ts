@@ -11,14 +11,14 @@ export type CommandParameters = {
 
 /**
  * An object which holds any variables being passed to a command
- * 
+ *
  * key: the provided identifier of the variable
- * 
+ *
  * value: the variable
  */
 export type CommandProps = {
-    [key: string]: any
-}
+    [key: string]: any;
+};
 
 /**
  * The type which is accepted by {@link Command.run} as the code which is executed by the command
