@@ -1,6 +1,6 @@
 {
   "name": "cmdcell",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A command parser designed for CellBot",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
