@@ -2,6 +2,10 @@
 /docs
 /tests
 /coverage
+/.github
 typedoc.json
 tsconfig.json
 jest.config.js
+.eslintrc.json
+.eslintignore
+.prettierrc
