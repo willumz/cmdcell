@@ -1,38 +1,43 @@
 {
-  "name": "cmdcell",
-  "version": "0.1.0",
-  "description": "A command parser designed for CellBot",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "build": "tsc",
-    "docs": "typedoc",
-    "test": "jest --coverage ./tests"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/willumz/cmdcell.git"
-  },
-  "keywords": [],
-  "author": "Will Rycroft",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/willumz/cmdcell/issues"
-  },
-  "homepage": "https://github.com/willumz/cmdcell#readme",
-  "dependencies": {
-    "discord.js": "^12.5.3"
-  },
-  "devDependencies": {
-    "@types/jest": "^26.0.23",
-    "@typescript-eslint/eslint-plugin": "^4.24.0",
-    "@typescript-eslint/parser": "^4.24.0",
-    "eslint": "^7.26.0",
-    "eslint-config-prettier": "^8.3.0",
-    "jest": "^26.6.3",
-    "prettier": "^2.3.0",
-    "ts-jest": "^26.5.6",
-    "typedoc": "^0.20.36",
-    "typescript": "^4.2.4"
-  }
+    "name": "cmdcell",
+    "version": "0.1.0",
+    "description": "A command parser designed for CellBot",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "tsc",
+        "docs": "typedoc",
+        "test": "jest --coverage ./tests"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/willumz/cmdcell.git"
+    },
+    "keywords": [
+        "command",
+        "parser",
+        "handler",
+        "parameters"
+    ],
+    "author": "Will Rycroft",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/willumz/cmdcell/issues"
+    },
+    "homepage": "https://github.com/willumz/cmdcell#readme",
+    "dependencies": {
+        "discord.js": "^12.5.3"
+    },
+    "devDependencies": {
+        "@types/jest": "^26.0.23",
+        "@typescript-eslint/eslint-plugin": "^4.24.0",
+        "@typescript-eslint/parser": "^4.24.0",
+        "eslint": "^7.26.0",
+        "eslint-config-prettier": "^8.3.0",
+        "jest": "^26.6.3",
+        "prettier": "^2.3.0",
+        "ts-jest": "^26.5.6",
+        "typedoc": "^0.20.36",
+        "typescript": "^4.2.4"
+    }
 }
