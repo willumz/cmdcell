@@ -104,15 +104,15 @@ export class CommandHandler {
             // Check parameter exists
             if (splitText.length > ind + 1) {
                 // Get parameter type
-                const paramType = CommandHandler.inferType(splitText[ind + 1]);
+                const paramTypes = CommandHandler.inferType(splitText[ind + 1]);
                 // Compare types
-                if (paramType !== val[1])
+                if (!paramTypes.includes(val[1]))
                     errors.push(
                         new ParseErrorInvalidParameterType(
                             val[0],
                             splitText[ind + 1],
                             val[1],
-                            paramType
+                            paramTypes
                         )
                     );
                 cmdParameters[val[0]] = splitText[ind + 1];
@@ -128,16 +128,17 @@ export class CommandHandler {
     }
 
     /**
-     * Infers the type ({@link CommandParameterType}) of a value given.
+     * Infers the possible types ({@link CommandParameterType}) of a value given.
      * @param value - The value to have its type inferred
-     * @returns The inferred type ({@link CommandParameterType.INVALID} if it isn't a valid type)
-     * if not type can be inferred.
+     * @returns The inferred types ({@link CommandParameterType.INVALID} if it isn't a valid type)
      */
-    static inferType(value: string): CommandParameterType {
-        if (value === "false" || value === "true") return CommandParameterType.BOOLEAN;
+    static inferType(value: string): CommandParameterType[] {
+        var types: CommandParameterType[] = [];
+        if (value !== null && value !== "") types.push(CommandParameterType.STRING);
+        if (value === "false" || value === "true") types.push(CommandParameterType.BOOLEAN);
         if (!isNaN(value as any) && value !== null && value !== "")
-            return CommandParameterType.NUMBER;
-        if (value !== null && value !== "") return CommandParameterType.STRING;
-        return CommandParameterType.INVALID;
+            types.push(CommandParameterType.NUMBER);
+        if (types.length === 0) types.push(CommandParameterType.INVALID);
+        return types;
     }
 }

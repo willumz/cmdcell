@@ -9,16 +9,20 @@ import {
 
 // Test `CommandHandler.inferType`
 test("Infers the type of 'hello' to be STRING", () => {
-    expect(CommandHandler.inferType("hello")).toBe(CommandParameterType.STRING);
+    expect(CommandHandler.inferType("hello")).toEqual([CommandParameterType.STRING]);
 });
 test("Infers the type of '21' to be NUMBER", () => {
-    expect(CommandHandler.inferType("21")).toBe(CommandParameterType.NUMBER);
+    expect(CommandHandler.inferType("21")).toContain(CommandParameterType.NUMBER);
+    expect(CommandHandler.inferType("21")).toContain(CommandParameterType.STRING);
+    expect(CommandHandler.inferType("21").length).toBe(2);
 });
 test("Infers the type of 'true' to be BOOLEAN", () => {
-    expect(CommandHandler.inferType("true")).toBe(CommandParameterType.BOOLEAN);
+    expect(CommandHandler.inferType("true")).toContain(CommandParameterType.BOOLEAN);
+    expect(CommandHandler.inferType("true")).toContain(CommandParameterType.STRING);
+    expect(CommandHandler.inferType("true").length).toBe(2);
 });
 test("Infers the type of '' to be INVALID", () => {
-    expect(CommandHandler.inferType("")).toBe(CommandParameterType.INVALID);
+    expect(CommandHandler.inferType("")).toEqual([CommandParameterType.INVALID]);
 });
 
 // Test `CommandHandler.parseCommand`

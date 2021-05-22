@@ -25,9 +25,7 @@
         "url": "https://github.com/willumz/cmdcell/issues"
     },
     "homepage": "https://github.com/willumz/cmdcell#readme",
-    "dependencies": {
-        "discord.js": "^12.5.3"
-    },
+    "dependencies": {},
     "devDependencies": {
         "@types/jest": "^26.0.23",
         "@typescript-eslint/eslint-plugin": "^4.24.0",

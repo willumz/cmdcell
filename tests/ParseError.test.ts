@@ -10,12 +10,12 @@ test("Instantiate ParseErrorInvalidParameterType", () => {
         "id",
         "some value",
         CommandParameterType.NUMBER,
-        CommandParameterType.STRING
+        [CommandParameterType.STRING]
     );
     expect(error.parameterName).toBe("id");
     expect(error.parameterValue).toBe("some value");
     expect(error.expectedType).toBe(CommandParameterType.NUMBER);
-    expect(error.invalidType).toBe(CommandParameterType.STRING);
+    expect(error.invalidTypes[0]).toBe(CommandParameterType.STRING);
 });
 
 test("Instantiate ParseErrorMissingParameter", () => {

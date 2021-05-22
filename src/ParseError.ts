@@ -14,26 +14,26 @@ export class ParseErrorInvalidParameterType extends ParseError {
     readonly parameterValue: string;
     /** The expected type */
     readonly expectedType: CommandParameterType;
-    /** The invalid type which was provided */
-    readonly invalidType: CommandParameterType;
+    /** The invalid potential types which were provided */
+    readonly invalidTypes: CommandParameterType[];
 
     /**
      * @param parameterName - The name of the parameter which was invalid
      * @param parameterValue - The value of the parameter which was invalid
      * @param expectedType - The type expected for the parameter
-     * @param invalidType - The type provided for the parameter
+     * @param invalidTypes - The potential inferred types provided for the parameter
      */
     constructor(
         parameterName: string,
         parameterValue: string,
         expectedType: CommandParameterType,
-        invalidType: CommandParameterType
+        invalidTypes: CommandParameterType[]
     ) {
         super();
         this.parameterName = parameterName;
         this.parameterValue = parameterValue;
         this.expectedType = expectedType;
-        this.invalidType = invalidType;
+        this.invalidTypes = invalidTypes;
     }
 }
 
